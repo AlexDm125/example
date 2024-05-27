@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/html.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <div style="background-color: rgb(255, 200, 0); height: 80px;">
+                <h1>HTML & CSS</h1>
+            </div>
+            <div style="background-color: rgb(51, 51, 49); height: 40px;">
+                <nav class="nav" style="margin-left: -15px;">
+                    <ul class="menu">
+                        <li>
+                            <i class="fas fa-bars" style=" color: white;" id="barBtn"></i>
+                        </li>
+                        <li style="margin-left: -25px;">
+                            <a href="../main/index.html">Головна</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="leftMenu" style="background-color: #f8f9fa;" id="leftMenu">
+                <a href="../Градієнти/index.html">Градієнти</a>
+                <a href="../Зображення/index.html">Зображення</a>
+                <a href="../Списки/index.html">Списки</a>
+                <a href="../Таблиці/index.html">Таблиці</a>
+                <a href="../Посилання/index.html">Посилання так кнопки</a>
+                <a href="../Форми/index.html">Форми</a>
+                <a href="../Анімація/index.html">Анімація</a>
+                <a href="../Мультимедія/index.html">Мультимедія</a>
+                <a href="Map/index.html">Тег map</a>
+                <a href="../Адаптивність/index.html">Адаптивний дизайн</a>
+            </div>
+            <div class="content" style="background-color: #f8f9fa;">
+                <h2>
+                    HTML & CSS 
+                </h2>
+                <p>
+                    HTML (HyperText Markup Language) - це мова розмітки, що використовується для створення
+                    структури веб-сторінок. Вона складається з різних елементів, таких як заголовки, 
+                    абзаци, списки, посилання тощо, які допомагають визначити, як контент повинен 
+                    бути представлений на сторінці.
+                </p>
+                <p>
+                    CSS (Cascading Style Sheets) - це мова стилів, яка використовується для стилізації веб-документів, 
+                    написаних мовою HTML. CSS дозволяє контролювати зовнішній вигляд елементів веб-сторінки, такий як 
+                    кольори, шрифти, розміри, розташування тощо. Завдяки CSS можна забезпечити однорідний та привабливий 
+                    дизайн для всіх сторінок вашого веб-сайту.
+                </p>
+                <p>
+                    Разом HTML і CSS допомагають створити зручні, інтуїтивно зрозумілі та привабливі веб-сторінки, 
+                    які ефективно передають інформацію користувачам та забезпечують їм приємний досвід користування вашим сайтом.
+                </p>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+    <script>
+        var barBtn = document.getElementById('barBtn');
+        var leftMenu = document.getElementById('leftMenu');
+
+        window.onload = function() {
+            if(window.innerWidth <= 1100) {
+                barBtn.style.display = 'block';
+                leftMenu.style.display = 'none';
+            }else{
+                barBtn.style.display = 'none';
+            }
+        }
+
+
+        window.onresize = function() {
+            if(window.innerWidth <= 1100) {
+                barBtn.style.display = 'block';
+                leftMenu.style.display = 'none';
+            } else {
+                barBtn.style.display = 'none';
+                leftMenu.style.display = 'block';
+            }
+        }
+
+        barBtn.onclick = function() {
+            if(leftMenu.style.display === 'none') {
+                leftMenu.style.display = 'block';
+            } else {
+                leftMenu.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener('scroll', function() {
+            var headerHeight = 120;
+            var scrollY = window.scrollY;
+            var newTop = headerHeight - scrollY;
+        
+            if (newTop < 0) {
+                newTop = 0;
+            }
+
+            document.documentElement.style.setProperty('--menu-top', newTop + 'px');
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const examples = document.querySelectorAll(".example");
+
+            examples.forEach(example => {
+            const tabs = example.querySelectorAll(".tab");
+            const codeContainers = example.querySelectorAll(".code-container");
+
+                tabs.forEach(tab => {
+                    tab.addEventListener("click", () => {
+                    const tabType = tab.getAttribute("data-tab");
+                    const codeContainer = example.querySelector(`.code-container[data-code="${tabType}"]`);
+
+                    if (tab.classList.contains("active")) {
+                        tab.classList.remove("active");
+                        codeContainer.classList.remove("active");
+                    } else {
+                        tabs.forEach(t => t.classList.remove("active"));
+                        codeContainers.forEach(cc => cc.classList.remove("active"));
+                        tab.classList.add("active");
+                        codeContainer.classList.add("active");
+                    }
+                });
+            });
+        });
+    });
+    </script>
+</body>
+</html>
